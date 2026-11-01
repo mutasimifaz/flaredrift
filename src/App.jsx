@@ -11,6 +11,8 @@ import {
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FlareScene from './components/FlareScene';
+import FluxMachine from './components/FluxMachine';
+import Lightroom from './components/Lightroom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,6 +63,7 @@ function Header() {
 
       <nav className={open ? 'nav nav-open' : 'nav'}>
         <a href="#work" onClick={close}>Selected work</a>
+        <a href="#playground" onClick={close}>Playground</a>
         <a href="#about" onClick={close}>About</a>
         <a href="#journal" onClick={close}>Journal</a>
         <a className="nav-contact" href="#contact" onClick={close}>
@@ -277,9 +280,38 @@ export default function App() {
           </div>
         </section>
 
+        <section className="playground-section section-pad" id="playground">
+          <div className="section-heading section-reveal">
+            <div>
+              <span className="eyebrow">02 — THE PLAYGROUND</span>
+              <h2>Make a little<br /><em>something move.</em></h2>
+            </div>
+            <p>
+              A small generative study. Move through the field, change its
+              energy and colour, and make the motion your own.
+            </p>
+          </div>
+          <div className="flux-intro-row">
+            <span>EXPERIMENT 001</span>
+            <span>AN INTERACTIVE STUDY IN MOTION</span>
+          </div>
+          <FluxMachine />
+          <div className="lightroom-intro section-reveal">
+            <div>
+              <span className="eyebrow">EXPERIMENT 002 — FLARE LAB</span>
+              <h3>Give light <em>some room.</em></h3>
+            </div>
+            <p>Shape sunlight, prism reflections and cinematic glow. Place the light, tune the atmosphere, and make the image yours.</p>
+          </div>
+          <Lightroom />
+          <a className="text-link flux-back-link" href="#work">
+            Back to selected work <ArrowDownRight size={16} />
+          </a>
+        </section>
+
         <section className="about-section section-pad" id="about">
           <div className="about-index section-reveal">
-            <span className="eyebrow">02 — THE IDEA</span>
+            <span className="eyebrow">03 — THE IDEA</span>
             <span className="big-index">FD—02</span>
           </div>
 
@@ -316,7 +348,7 @@ export default function App() {
 
         <section className="journal-section section-pad" id="journal">
           <div className="journal-inner section-reveal">
-            <span className="eyebrow">03 — JOURNAL / NOTES</span>
+            <span className="eyebrow">04 — JOURNAL / NOTES</span>
 
             <h2>
               Room for what
@@ -339,7 +371,7 @@ export default function App() {
 
         <section className="contact-section section-pad" id="contact">
           <span className="eyebrow section-reveal">
-            04 — KEEP IN TOUCH
+            05 — KEEP IN TOUCH
           </span>
 
           <div className="contact-row section-reveal">
