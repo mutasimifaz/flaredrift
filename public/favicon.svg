@@ -1,0 +1,24 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="flare" x1="12" y1="48" x2="53" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff9b24"/>
+      <stop offset=".3" stop-color="#ffb52e"/>
+      <stop offset=".62" stop-color="#ff7138"/>
+      <stop offset=".82" stop-color="#287dff"/>
+      <stop offset="1" stop-color="#45d8ff"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M12 52
+       C16 37 20 27 32 22
+       C40 18 49 16 57 14
+       C48 21 39 25 31 28
+       C25 31 22 35 20 39
+       C30 33 42 30 55 29
+       C43 34 33 37 25 42
+       C20 45 16 49 12 52Z"
+    fill="url(#flare)"
+  />
+</svg>
