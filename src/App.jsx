@@ -381,7 +381,7 @@ export default function App() {
           FLAREDRIFT<span>.</span>
         </a>
 
-        <span>IDEAS IN MOTION — © 2026</span>
+        <span>Interactive Ideas in Motion — © 2026</span>
         <span>BUILT TO DRIFT.</span>
       </footer>
     </div>
