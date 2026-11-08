@@ -69,7 +69,7 @@ export const launched = [
     description:
       'An approachable learning space for Bengali speakers to build English confidence and get practical digital and AI guidance in Bangla. Bhashora brings language learning and everyday digital help together in a Bengali-first experience.',
     facts: [['Format', 'Progressive web app'], ['Focus', 'English learning & digital help'], ['Language', 'Bangla-first']],
-    cta: { label: 'Visit Bhashora', href: 'https://bhashora.vercel.app/', external: true },
+    cta: { label: 'Visit Bhashora', href: 'https://bhashora-learn.web.app/', external: true },
     art: 'bhashora',
   },
 ];

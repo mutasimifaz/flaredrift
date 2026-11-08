@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
+
 * {
   box-sizing: border-box;
 }
@@ -1560,18 +1561,7 @@ button {
 .eco-node:hover { transform: translateY(-6px); border-color: var(--o); background: #171310; }
 .eco-node b { font-size: 25px; letter-spacing: -.06em; margin: 12px 0 4px; }
 .eco-node small { font-size: 11px; color: #aaa39c; }
-.eco-node > svg {
-  position: absolute;
-  right: 19px;
-  bottom: 18px;
-  width: 16px;
-  height: 16px;
-  color: var(--o);
-  stroke: currentColor;
-  fill: none;
-  display: block;
-  flex-shrink: 0;
-}
+.eco-node > svg { position: absolute; right: 19px; bottom: 18px; color: var(--o); width: 16px; height: 16px; }
 .eco-bhashora { top: 22px; left: 4%; border-top: 2px solid #c9a96c; }
 .eco-iwrite { right: 3%; top: 54px; border-top: 2px solid #a49a90; }
 .eco-flare { bottom: 12px; left: calc(50% - 122px); border-top: 2px solid #287dff; }

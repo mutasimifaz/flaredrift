@@ -7,33 +7,11 @@ const svg = (inner, size = 16, cls = '') =>
   `<svg${cls ? ` class="${cls}"` : ''} xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
 
 const I = {
-  up: (s) => svg(
-    '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
-    s
-  ),
-
-  down: (s) => svg(
-    '<path d="m7 7 10 10"/><path d="M17 7v10H7"/>',
-    s
-  ),
-
-  menu: (s) => svg(
-    '<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>',
-    s,
-    'i-menu'
-  ),
-
-  close: (s) => svg(
-    '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
-    s,
-    'i-close'
-  ),
-
-  external: (s) => svg(
-    '<path d="M7 17 17 7"/><path d="M7 7h10v10"/>',
-    s,
-    'i-external'
-  ),
+  up: (s) => svg('<path d="M7 7h10v10"/><path d="M7 17 17 7"/>', s),
+  down: (s) => svg('<path d="m7 7 10 10"/><path d="M17 7v10H7"/>', s),
+  menu: (s) => svg('<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>', s, 'i-menu'),
+  close: (s) => svg('<path d="M18 6 6 18"/><path d="m6 6 12 12"/>', s, 'i-close'),
+  external: (s) => svg('<path d="M7 17 17 7"/><path d="M7 7h10v10"/>', s, 'i-external'),
 };
 
 function header(active) {
@@ -183,7 +161,7 @@ function visionBody() {
           <p class="p-lede">Flaredrift is an independent creative playground and laboratory.</p>
           <a class="text-link" href="#manifesto">Read the manifesto ${I.down(16)}</a>
         </div>
-        <div class="p-geo" aria-hidden="true"><i class="g-ring"></i><i class="g-sq"></i><i class="g-dot"></i></div>
+        <div class="vision-mark" aria-hidden="true"><span class="vision-mark-word">MAKE</span><span class="vision-mark-line"></span><span class="vision-mark-caption">ROOM FOR THE UNEXPECTED</span></div>
       </section>
 
       <section class="p-section manifesto" id="manifesto" aria-labelledby="man-h">
@@ -222,32 +200,9 @@ function visionBody() {
         </div>
         <div class="ecosystem-orbit" data-reveal>
           <div class="ecosystem-core"><span>FLAREDRIFT</span><b>IDEAS<br/>IN MOTION</b><small>THE CREATIVE HOME</small></div>
-          <a class="eco-node eco-bhashora"
-   href="https://bhashora-learn.web.app/"
-   target="_blank"
-   rel="noopener noreferrer">
-  <span class="eco-index">01 / LEARN</span>
-  <b>Bhashora</b>
-  <small>Language &amp; digital confidence</small>
-  ${I.external(16)}
-</a>
-
-<a class="eco-node eco-iwrite"
-   href="https://iwrite-here.web.app/"
-   target="_blank"
-   rel="noopener noreferrer">
-  <span class="eco-index">02 / WRITE</span>
-  <b>iwritehere</b>
-  <small>A shared writing café</small>
-  ${I.external(16)}
-</a>
-
-<a class="eco-node eco-flare" href="/#flare-lab">
-  <span class="eco-index">03 / PLAY</span>
-  <b>Flare Lab</b>
-  <small>Light as a creative material</small>
-  ${I.external(16)}
-</a>
+          <a class="eco-node eco-bhashora" href="https://bhashora-learn.web.app/" target="_blank" rel="noopener noreferrer"><span class="eco-index">01 / LEARN</span><b>Bhashora</b><small>Language &amp; digital confidence</small>${I.external(16)}</a>
+          <a class="eco-node eco-iwrite" href="https://iwrite-here.web.app/" target="_blank" rel="noopener noreferrer"><span class="eco-index">02 / WRITE</span><b>iwritehere</b><small>A shared writing café</small>${I.external(16)}</a>
+          <a class="eco-node eco-flare" href="/#flare-lab"><span class="eco-index">03 / PLAY</span><b>Flare Lab</b><small>Light as a creative material</small>${I.external(16)}</a>
           <span class="eco-orbit-line orbit-line-one"></span><span class="eco-orbit-line orbit-line-two"></span>
         </div>
         <p class="ecosystem-footnote" data-reveal>Different outcomes. One instinct: make the digital world feel more human.</p>
@@ -311,12 +266,14 @@ function carryOver(template) {
   return { lines, css };
 }
 
-export function renderPage(route, { template, dev = false, version = '' }) {
+export function renderPage(route, { template, dev = false, version = '', sharedCss = [] }) {
   const p = pages[route];
   const url = SITE + p.path;
   const { lines, css } = carryOver(template);
   const v = version ? `?v=${version}` : '';
-  const styles = css.length ? css.join('\n    ') : '<link rel="stylesheet" href="/src/styles.css?direct" />';
+  // Static pages do not execute the React entry module, so their shared app CSS must be linked explicitly.
+  const sharedLinks = (sharedCss.length ? sharedCss : (dev ? ['/src/styles.css?direct'] : [])).map((href) => `<link rel="stylesheet" href="${href}" />`);
+  const styles = [...new Set([...css, ...sharedLinks])].join('\n    ');
   const body = route === 'ventures' ? venturesBody() : visionBody();
   const image = SITE + '/icons/icon-512.png';
   return `<!doctype html>

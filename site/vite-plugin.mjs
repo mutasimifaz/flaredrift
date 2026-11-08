@@ -41,7 +41,7 @@ export default function flaredriftSite() {
         if (!route) return next();
         const template = await fs.readFile(path.join(root, 'index.html'), 'utf8');
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
-        res.end(renderPage(route, { template, dev: true }));
+        res.end(renderPage(route, { template, dev: true, sharedCss: ['/src/styles.css?direct'] }));
       });
     },
 
@@ -57,12 +57,21 @@ export default function flaredriftSite() {
       index = index.replace(/src="\/pwa\.js"/, `src="/pwa.js?v=${pwaV}"`);
       await fs.writeFile(indexPath, index);
 
+      // React-imported CSS is emitted as an asset and is not guaranteed to appear as a
+      // stylesheet link in the HTML template. Static HTML pages need it explicitly.
+      const assetDir = path.join(outDir, 'assets');
+      let sharedCss = [];
+      try {
+        const cssFiles = (await fs.readdir(assetDir)).filter((name) => name.endsWith('.css')).sort();
+        sharedCss = cssFiles.map((name) => `/assets/${name}`);
+      } catch { /* keep building; renderPage retains any stylesheet links from index.html */ }
+
       const generated = [];
       for (const route of routes) {
         const dir = path.join(outDir, pages[route].path);
         await fs.mkdir(dir, { recursive: true });
         // pass the same version to every page so the precache list matches exactly
-        const html = renderPage(route, { template: index, version });
+        const html = renderPage(route, { template: index, version, sharedCss });
         await fs.writeFile(path.join(dir, 'index.html'), html);
         generated.push(pages[route].path);
       }

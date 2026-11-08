@@ -38,17 +38,6 @@ const projects = [
       'An act of preservation. The animations are archived, not original creations.',
     className: 'project-wumpus',
     live: 'https://wumpusgallery.vercel.app/',
-  },
-  {
-    number: '03',
-    name: 'Bhashora',
-    category: 'A Bengali-first learning platform',
-    description:
-      'An approachable space for Bengali speakers to build English confidence and get practical digital and AI guidance in Bangla. Designed to make useful learning feel less intimidating and more accessible.',
-    note:
-      'Built around a simple idea: language and technology should feel within reach.',
-    className: 'project-bhashora',
-    live: 'https://bhashora.vercel.app/',
   }
 ];
 
@@ -119,7 +108,7 @@ function ProjectCard({ project, index }) {
 
             <span className="visual-index">A PLACE TO BEGIN</span>
           </div>
-        ) : index === 1 ? (
+        ) : (
           <div className="wumpus-art">
             <div className="wumpus-circle circle-a" />
             <div className="wumpus-circle circle-b" />
@@ -136,23 +125,10 @@ function ProjectCard({ project, index }) {
               COLLECTED / PRESERVED
             </span>
           </div>
-        ) : (
-          <div className="bhashora-art" aria-label="Bhashora Bengali-first learning platform visual">
-            <div className="bhashora-orbit orbit-a" />
-            <div className="bhashora-orbit orbit-b" />
-            <div className="bhashora-sun" />
-            <div className="bhashora-panel">
-              <span className="bhashora-bangla">ভাষোরা</span>
-              <span className="bhashora-rule" />
-              <span className="bhashora-caption">LEARN / GROW / CONNECT</span>
-              <div className="bhashora-bars"><i /><i /><i /></div>
-            </div>
-            <span className="visual-index">LANGUAGE WITHOUT DISTANCE</span>
-          </div>
         )}
 
         <span className="project-number">
-          {project.number} / 03
+          {project.number} / 02
         </span>
       </div>
 
