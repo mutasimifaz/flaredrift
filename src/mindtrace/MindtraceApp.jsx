@@ -4,7 +4,6 @@ import {
   FileText, Focus, Layers, Plus, Scale, ShieldCheck, SlidersHorizontal,
   Sparkles, Trash2, X, AlertTriangle, Lightbulb, BookOpen, RotateCcw, Bot, Send, GitBranch, Menu,
 } from 'lucide-react';
-import './mindtrace.css';
 
 const STORE = 'mindtrace.projects.v1';
 const nodeTypes = ['Question', 'Option', 'Criterion', 'Evidence', 'Assumption', 'Risk', 'Consequence', 'Insight', 'Outcome'];

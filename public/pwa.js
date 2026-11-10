@@ -88,7 +88,9 @@
     e.preventDefault();
     deferred = e;
     if (dismissed || installCard) return;
-    installCard = card('Install Flaredrift as an app', 'Install', 'download', function () {
+    var appName = document.querySelector('meta[name="application-name"]')?.content ||
+      (document.title.toUpperCase().includes('MINDTRACE') ? 'MINDTRACE' : 'Flaredrift');
+    installCard = card('Install ' + appName + ' as an app', 'Install', 'download', function () {
       if (!deferred) return;
       deferred.prompt();
       deferred.userChoice.then(function () { deferred = null; if (installCard) installCard.remove(); });

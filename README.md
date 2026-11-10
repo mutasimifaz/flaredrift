@@ -43,3 +43,22 @@ Run `npm run build`, review the generated `dist/` output, then commit and push t
 ## Verification
 
 The patch includes source-level SEO and routing updates. Run the build and test all four routes after applying it. Search engines decide when and whether to recrawl or display sitelinks; metadata and sitemap updates cannot guarantee a ranking or sitelink result.
+
+
+## MINDTRACE deployment and PWA refresh (2026-11-10)
+
+- `/mindtrace/` now uses its own Vite entry (`src/mindtrace/main.jsx`). Its main stylesheet and responsive overrides are imported statically so the production HTML receives the MINDTRACE CSS with the entry bundle.
+- The MINDTRACE route now uses `public/mindtrace.webmanifest` and its own brain/circuit app icons. The Flaredrift homepage keeps the separate Flaredrift manifest and the updated `public/Logo.svg` icon artwork.
+- Manifest and icon URLs are versioned to prevent the previous install metadata from being reused.
+- The MINDTRACE responsive scrollbar overrides are now actually imported by the MINDTRACE entry.
+
+### Deploy
+
+1. Replace the project with the contents of this ZIP (keep your Git repository history; do not upload the ZIP itself as the website).
+2. Run `npm install` and `npm run build`.
+3. Commit and push to GitHub. Vercel should deploy automatically from the connected repository.
+4. After deployment, open `https://flaredrift.vercel.app/mindtrace/` and hard-refresh once.
+
+### Refresh an already-installed mobile PWA
+
+Browsers may retain the icon of an app that was installed before the manifest changed. After the new deployment, remove the old installed Flaredrift/MINDTRACE shortcut from the phone, open the correct page in the browser, and install it again. Install from `/mindtrace/` to get the MINDTRACE icon; install from `/` to get the Flaredrift icon.
