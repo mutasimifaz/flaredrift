@@ -105,3 +105,120 @@
 @media(prefers-reduced-motion:reduce) {
   .mt-app *, .mt-app *::before, .mt-app *::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
 }
+
+/* Mobile overflow + workspace scrollbar polish */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.mt-app,
+.mt-main,
+.mt-engine-panel {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Keep intentional inner scrolling, but make it visually quiet and consistent. */
+.mt-board-wrap,
+.mt-source-list,
+.mt-sidebar.is-open > .mt-project-list,
+.mt-engine-toolbar .mt-tabs,
+.mt-table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #625a7d #17161e;
+  scrollbar-gutter: stable;
+}
+
+.mt-board-wrap::-webkit-scrollbar,
+.mt-source-list::-webkit-scrollbar,
+.mt-sidebar.is-open > .mt-project-list::-webkit-scrollbar,
+.mt-engine-toolbar .mt-tabs::-webkit-scrollbar,
+.mt-table-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.mt-board-wrap::-webkit-scrollbar-track,
+.mt-source-list::-webkit-scrollbar-track,
+.mt-sidebar.is-open > .mt-project-list::-webkit-scrollbar-track,
+.mt-engine-toolbar .mt-tabs::-webkit-scrollbar-track,
+.mt-table-scroll::-webkit-scrollbar-track {
+  background: #17161e;
+  border-radius: 99px;
+}
+
+.mt-board-wrap::-webkit-scrollbar-thumb,
+.mt-source-list::-webkit-scrollbar-thumb,
+.mt-sidebar.is-open > .mt-project-list::-webkit-scrollbar-thumb,
+.mt-engine-toolbar .mt-tabs::-webkit-scrollbar-thumb,
+.mt-table-scroll::-webkit-scrollbar-thumb {
+  background: #625a7d;
+  border: 1px solid #17161e;
+  border-radius: 99px;
+}
+
+.mt-board-wrap::-webkit-scrollbar-thumb:hover,
+.mt-source-list::-webkit-scrollbar-thumb:hover,
+.mt-sidebar.is-open > .mt-project-list::-webkit-scrollbar-thumb:hover,
+.mt-engine-toolbar .mt-tabs::-webkit-scrollbar-thumb:hover,
+.mt-table-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9184b8;
+}
+
+/* The add-node tray wraps instead of creating a second horizontal page overflow. */
+.mt-add-node {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+.mt-add-node button {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 580px) {
+  .mt-app,
+  .mt-main,
+  .mt-work-head,
+  .mt-toolbar,
+  .mt-engine-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  .mt-board-wrap {
+    width: calc(100% - 18px);
+    max-width: calc(100% - 18px);
+    overflow: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #8173a5 #17161e;
+  }
+
+  .mt-board-wrap::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .mt-board-wrap::-webkit-scrollbar-track {
+    background: #17161e;
+    border-radius: 99px;
+  }
+  .mt-board-wrap::-webkit-scrollbar-thumb {
+    background: #8173a5;
+    border: 1px solid #17161e;
+    border-radius: 99px;
+  }
+
+  .mt-add-node {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .mt-add-node > span {
+    flex: 0 0 100%;
+  }
+}
