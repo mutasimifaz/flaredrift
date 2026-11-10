@@ -1,0 +1,49 @@
+/* Responsive workspace and board navigation */
+.mt-work-head > div:first-child { min-width: 0; }
+.mt-eyebrow { display:flex; align-items:center; flex-wrap:wrap; gap:7px; }
+.mt-id { display:inline-block; margin-left:0; white-space:nowrap; }
+.mt-board-wrap { overflow:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+.mt-board { touch-action:pan-x pan-y; }
+.mt-node { touch-action:none; }
+.mt-inspector { width:min(560px, calc(100% - 32px)); max-width:100%; }
+.mt-inspector label { min-width:0; }
+.mt-inspector select[multiple] { width:100%; min-height:120px; }
+@media (max-width:800px) {
+  .mt-app { min-width:0; }
+  .mt-sidebar { width:190px; flex-basis:190px; }
+  .mt-topbar { gap:12px; }
+  .mt-breadcrumb { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mt-work-head { align-items:flex-start; }
+  .mt-work-head>div:first-child { flex:1 1 auto; }
+  .mt-title-input { width:100%; max-width:100%; }
+  .mt-head-actions { flex:0 0 auto; }
+  .mt-board-wrap { overflow-x:auto; overflow-y:hidden; }
+  .mt-board { min-width:1100px; }
+}
+@media (max-width:580px) {
+  .mt-app { display:block; width:100%; overflow-x:clip; }
+  .mt-sidebar { width:100%; min-height:0; height:auto; padding:10px 12px; display:flex; flex-direction:column; align-items:stretch; gap:10px; border-right:0; border-bottom:1px solid #292832; }
+  .mt-sidebar .mt-brand { align-self:flex-start; }
+  .mt-sidebar .mt-side-label { display:flex; }
+  .mt-sidebar .mt-new { display:flex; }
+  .mt-sidebar .mt-project-list { display:flex; max-height:100px; overflow:auto; flex-direction:row; flex-wrap:nowrap; }
+  .mt-sidebar .mt-project-link { flex:0 0 auto; max-width:190px; }
+  .mt-sidebar .mt-empty-side { display:block; }
+  .mt-sidebar .mt-side-bottom { display:flex; flex-wrap:wrap; gap:8px; }
+  .mt-sidebar .mt-local-status { flex:1 0 100%; }
+  .mt-main { width:100%; min-width:0; }
+  .mt-topbar { min-height:48px; padding:0 12px; }
+  .mt-top-actions { gap:7px; }
+  .mt-work-head { padding:22px 14px 18px; gap:12px; }
+  .mt-work-head .mt-eyebrow { font-size:8px; line-height:1.7; }
+  .mt-work-head p { max-width:100%; }
+  .mt-engine-toolbar { overflow-x:auto; }
+  .mt-engine-toolbar .mt-tabs { flex:0 0 auto; }
+  .mt-board-wrap { margin:0 12px; }
+  .mt-board-hint { margin:10px 12px; line-height:1.7; }
+  .mt-add-node { margin:0 12px; flex-wrap:wrap; }
+  .mt-inspector { width:auto; margin:16px 12px; padding:14px; }
+  .mt-inspector label { width:100%; }
+  .mt-inspector input:not([type=range]), .mt-inspector select, .mt-inspector textarea { width:100%; max-width:100%; }
+  .mt-engine-panel { padding-left:14px; padding-right:14px; }
+}

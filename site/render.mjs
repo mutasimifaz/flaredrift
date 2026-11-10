@@ -229,13 +229,30 @@ function jsonLd(route) {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'Organization',
+        '@id': SITE + '/#organization',
+        name: 'Flaredrift',
+        url: SITE + '/',
+        logo: { '@type': 'ImageObject', url: SITE + '/icons/icon-512.png' },
+        founder: { '@type': 'Person', name: 'Mutasim Ifaz' },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': SITE + '/#website',
+        url: SITE + '/',
+        name: 'Flaredrift',
+        publisher: { '@id': SITE + '/#organization' },
+        inLanguage: 'en',
+      },
+      {
         '@type': route === 'ventures' ? 'CollectionPage' : 'AboutPage',
         '@id': url + '#webpage',
         url,
         name: p.title,
         description: p.description,
         inLanguage: 'en',
-        isPartOf: { '@type': 'WebSite', name: 'Flaredrift', url: SITE + '/' },
+        isPartOf: { '@id': SITE + '/#website' },
+        about: { '@id': SITE + '/#organization' },
       },
       {
         '@type': 'BreadcrumbList',

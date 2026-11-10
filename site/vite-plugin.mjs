@@ -57,6 +57,12 @@ export default function flaredriftSite() {
       index = index.replace(/src="\/pwa\.js"/, `src="/pwa.js?v=${pwaV}"`);
       await fs.writeFile(indexPath, index);
 
+      // Keep the standalone MINDTRACE entry on the same versioned PWA client.
+      const mindtracePath = path.join(outDir, 'mindtrace/index.html');
+      let mindtraceHtml = await fs.readFile(mindtracePath, 'utf8');
+      mindtraceHtml = mindtraceHtml.replace(/src="\/pwa\.js"/, `src="/pwa.js?v=${pwaV}"`);
+      await fs.writeFile(mindtracePath, mindtraceHtml);
+
       // React-imported CSS is emitted as an asset and is not guaranteed to appear as a
       // stylesheet link in the HTML template. Static HTML pages need it explicitly.
       const assetDir = path.join(outDir, 'assets');
@@ -79,7 +85,7 @@ export default function flaredriftSite() {
       const files = (await walk(outDir)).filter(
         (f) => !f.endsWith('.map') && f !== '/sw.js' && !f.endsWith('/index.html') && f !== '/robots.txt' && f !== '/sitemap.xml' && f !== '/icons.svg'
       );
-      const urls = new Set(['/', ...generated, '/offline.html']);
+      const urls = new Set(['/', ...generated, '/mindtrace/', '/offline.html']);
       for (const f of files) {
         if (f === '/static/pages.css' || f === '/static/pages.js') urls.add(`${f}?v=${version}`);
         else if (f === '/pwa.js') { urls.add(`/pwa.js?v=${pwaV}`); urls.add(`/pwa.js?v=${version}`); }
@@ -88,7 +94,7 @@ export default function flaredriftSite() {
       const list = [...urls].sort();
 
       const htmlStamp = [];
-      for (const u of ['/', ...generated]) {
+      for (const u of ['/', ...generated, '/mindtrace/']) {
         const p = u === '/' ? 'index.html' : path.join(u, 'index.html');
         htmlStamp.push(await fs.readFile(path.join(outDir, p), 'utf8'));
       }

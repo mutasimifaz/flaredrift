@@ -11,7 +11,7 @@ const FONTS_NAME = `${PREFIX}-fonts-v1`;
 const KEEP = [PRECACHE_NAME, RUNTIME_NAME, FONTS_NAME];
 
 const OFFLINE_URL = '/offline.html';
-const PAGES = ['/', '/ventures/', '/vision/'];
+const PAGES = ['/', '/ventures/', '/vision/', '/mindtrace/'];
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 const NAV_TIMEOUT_MS = 6000;
 

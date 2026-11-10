@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import './styles.css';
+
+const isMindtrace = /^\/mindtrace(?:\/|$)/.test(window.location.pathname);
+const App = lazy(() => isMindtrace ? import('./mindtrace/MindtraceApp.jsx') : import('./App.jsx'));
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<main aria-live="polite" style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', color: '#999', background: '#0b0b0f', fontFamily: 'system-ui' }}>Loading workspace…</main>}>
+      <App />
+    </Suspense>
   </React.StrictMode>
 );
-// The page is rendered by React after load, so honour deep links such as /#flare-lab
-// when arriving from /ventures/ or /vision/.
-if (window.location.hash) {
-  const id = decodeURIComponent(window.location.hash.slice(1));
-  window.setTimeout(() => {
-    document.getElementById(id)?.scrollIntoView();
-  }, 350);
-}

@@ -45,13 +45,19 @@ button {
 }
 
 .wordmark {
-  font-size: 19px;
-  letter-spacing: -.075em;
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 0;
+  flex-shrink: 0;
 }
 
-.wordmark span {
-  color: #ff4322;
+.wordmark img {
+  display: block;
+  width: 148px;
+  height: 48px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .nav {
@@ -712,12 +718,10 @@ button {
   font: 8px 'DM Mono', monospace;
   letter-spacing: .1em;
 }
-
-.footer .wordmark {
-  font: 800 15px 'Manrope', sans-serif;
-  color: #f2eee8;
+.footer .wordmark img {
+  width: 128px;
+  height: 34px;
 }
-
 /* Tablet */
 
 @media (max-width: 900px) {
@@ -760,10 +764,15 @@ button {
     padding: 0 22px;
   }
 
-  .wordmark {
-    font-size: 17px;
+  .wordmark img {
+    width: 126px;
+    height: 34px;
   }
 
+  .footer .wordmark img {
+    width: 116px;
+    height: 30px;
+  }
   .menu-toggle {
     display: block;
     padding: 8px;

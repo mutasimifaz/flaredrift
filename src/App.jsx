@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -48,9 +47,9 @@ function Header() {
 
   return (
     <header className="header">
-      <a className="wordmark" href="#home">
-        FLAREDRIFT<span>.</span>
-      </a>
+      <a className="wordmark" href="#home" aria-label="Flaredrift home">
+  <img src="/Logo.svg" alt="Flaredrift" />
+</a>
 
       <button
         className="menu-toggle"
@@ -66,6 +65,7 @@ function Header() {
         <a href="#playground" onClick={close}>Playground</a>
         <a href="#about" onClick={close}>About</a>
         <a href="#journal" onClick={close}>Journal</a>
+        <a href="/mindtrace/" onClick={close}>MINDTRACE</a>
         <a href="/ventures/">Ventures</a>
         <a href="/vision/">Vision</a>
         <a className="nav-contact" href="#contact" onClick={close}>
@@ -232,6 +232,9 @@ export default function App() {
 
             <a className="text-link" href="#work">
               Explore selected work <ArrowDownRight size={17} />
+            </a>
+            <a className="text-link" href="/mindtrace/">
+              Explore MINDTRACE <ArrowUpRight size={15} />
             </a>
           </div>
 

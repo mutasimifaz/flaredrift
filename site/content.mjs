@@ -11,28 +11,29 @@ export const nav = [
   { label: 'Journal', href: '/#journal' },
   { label: 'Ventures', href: '/ventures/', route: 'ventures' },
   { label: 'Vision', href: '/vision/', route: 'vision' },
+  { label: 'MINDTRACE', href: '/mindtrace/' },
 ];
 
 export const pages = {
   ventures: {
     path: '/ventures/',
-    title: 'Ventures — Flaredrift',
+    title: 'Ventures & Independent Projects — Flaredrift',
     description:
-      'Ventures from Flaredrift: launched projects Bhashora, iwritehere and Flare Lab, plus the experiments and concepts currently being explored, each with an honest status.',
+      'Explore Flaredrift projects: Bhashora, iwritehere, Flare Lab and MINDTRACE, alongside creative coding experiments and independent digital concepts.',
     keywords:
       'Flaredrift ventures, Bhashora, Bengali English learning, iwritehere, Flare Lab, creative experiments, independent digital products',
-    ogTitle: 'Ventures — Flaredrift',
+    ogTitle: 'Ventures & Independent Projects — Flaredrift',
     ogDescription:
-      'What has launched, what is experimental, and what is still only an idea. Ventures from Flaredrift.',
+      'Explore launched Flaredrift projects, MINDTRACE and experiments in creative coding, interactive tools and independent digital products.',
   },
   vision: {
     path: '/vision/',
-    title: 'Vision — Flaredrift',
+    title: 'Vision & Creative Direction — Flaredrift',
     description:
-      'The Flaredrift vision: an independent creative playground and laboratory exploring creative coding, experimental websites, interactive experiences and useful independent products such as Bhashora, iwritehere and Flare Lab.',
+      'Explore the Flaredrift vision for creative coding, experimental websites, interactive experiences and useful digital products such as Flare Lab and MINDTRACE.',
     keywords:
       'Flaredrift vision, creative coding, experimental websites, interactive experiences, digital tools, independent creative lab',
-    ogTitle: 'Vision — Flaredrift',
+    ogTitle: 'Vision & Creative Direction — Flaredrift',
     ogDescription:
       'Curiosity over convention. Flaredrift is an independent creative playground and laboratory.',
   },
@@ -109,6 +110,14 @@ export const experiments = [
     status: 'Concept',
     description:
       'Questions about what a website can be when it is treated as a place instead of a page: scroll, space, memory and surprise.',
+  },
+  {
+    number: 'E5',
+    name: 'MINDTRACE',
+    status: 'In Development',
+    description:
+      'A local-first workspace for mapping decisions, organizing evidence, examining assumptions and making complex reasoning easier to inspect. Its first foundation is available to explore.',
+    cta: { label: 'Open MINDTRACE', href: '/mindtrace/' },
   },
 ];
 
